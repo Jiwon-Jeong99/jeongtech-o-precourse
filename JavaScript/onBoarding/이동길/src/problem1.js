@@ -1,4 +1,11 @@
 function problem1(pobi, crong) {
+  pobi.map(([left, right]) => {
+    const leftMax = Math.max(getAddedNumber(left), getMultipliedNumber(left));
+    const rightMax = Math.max(
+      getAddedNumber(right),
+      getMultipliedNumber(right)
+    );
+  });
   var answer;
   return answer;
 }
