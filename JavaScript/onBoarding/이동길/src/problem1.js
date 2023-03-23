@@ -44,6 +44,15 @@ function checkNumberInRange(numberArray) {
   }
   return 1;
 }
+
+function checkNumberEvenOrOdd(left, right) {
+  if (left % 2 != 0 || right % 2 != 1) return 0;
+  return 0;
+}
+
 function isCorrect(pobi, crong) {
-  return checkNumberInRange([...pobi, ...crong]);
+  if (!checkNumberInRange([...pobi, ...crong])) return 0;
+  if (!checkNumberEvenOrOdd(pobi[0], pobi[1])) return 0;
+  if (!checkNumberEvenOrOdd(crong[0], crong[1])) return 0;
+  return 1;
 }
