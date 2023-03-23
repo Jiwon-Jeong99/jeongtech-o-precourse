@@ -30,7 +30,7 @@ function getMultipliedNumber(number) {
   return numberArray.reduce((sum, num) => sum * num);
 }
 
-function getResult(leftNubmer, rightNumber) {
+function getResult(leftNumber, rightNumber) {
   if (leftNumber > rightNumber) return 1;
   if (leftNumber < rightNumber) return 2;
   if (leftNumber === rightNumber) return 0;
