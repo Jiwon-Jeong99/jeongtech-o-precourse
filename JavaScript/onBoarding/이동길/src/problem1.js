@@ -1,3 +1,6 @@
+const ERROR = 0;
+const OK = 1;
+
 function problem1(pobi, crong) {
   if (!isCorrect(pobi, crong)) return -1;
 
@@ -39,20 +42,20 @@ function getResult(leftNumber, rightNumber) {
 }
 
 function checkNumberInRange(numberArray) {
-  for (const i = 0; i < numberArray.length; i++) {
-    if (numberArray[i] <= 1 && numberArray >= 400) return 0;
+  for (let i = 0; i < numberArray.length; i++) {
+    if (numberArray[i] <= 1 && numberArray >= 400) return ERROR;
   }
-  return 1;
+  return OK;
 }
 
 function checkNumberEvenOrOdd(left, right) {
-  if (left % 2 != 0 || right % 2 != 1) return 0;
-  return 0;
+  if (left % 2 == 0 || right % 2 == 1) return ERROR;
+  return OK;
 }
 
 function isCorrect(pobi, crong) {
-  if (!checkNumberInRange([...pobi, ...crong])) return 0;
-  if (!checkNumberEvenOrOdd(pobi[0], pobi[1])) return 0;
-  if (!checkNumberEvenOrOdd(crong[0], crong[1])) return 0;
-  return 1;
+  if (!checkNumberInRange([...pobi, ...crong])) return ERROR;
+  if (!checkNumberEvenOrOdd(pobi[0], pobi[1])) return ERROR;
+  if (!checkNumberEvenOrOdd(crong[0], crong[1])) return ERROR;
+  return OK;
 }
