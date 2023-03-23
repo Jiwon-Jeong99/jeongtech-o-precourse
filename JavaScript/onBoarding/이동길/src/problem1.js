@@ -6,7 +6,7 @@ function problem1(pobi, crong) {
       getMultipliedNumber(right)
     );
   });
-  var answer;
+  var answer = getResult(leftMax, rightMax);
   return answer;
 }
 
@@ -26,4 +26,10 @@ function getSliceNumberArray(number) {
 function getMultipliedNumber(number) {
   const numberArray = getSliceNumberArray(number);
   return numberArray.reduce((sum, num) => sum * num);
+}
+
+function getResult(leftNubmer, rightNumber) {
+  if (leftNumber > rightNumber) return 1;
+  if (leftNumber < rightNumber) return 2;
+  if (leftNumber === rightNumber) return 0;
 }
