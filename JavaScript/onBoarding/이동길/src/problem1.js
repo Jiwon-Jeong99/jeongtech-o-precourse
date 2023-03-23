@@ -1,4 +1,6 @@
 function problem1(pobi, crong) {
+  if (!isCorrect(pobi, crong)) return -1;
+
   const pobiMaxArray = pobi.map((number) =>
     Math.max(getAddedNumber(number), getMultipliedNumber(number))
   );
@@ -34,4 +36,14 @@ function getResult(leftNumber, rightNumber) {
   if (leftNumber > rightNumber) return 1;
   if (leftNumber < rightNumber) return 2;
   if (leftNumber === rightNumber) return 0;
+}
+
+function checkNumberInRange(numberArray) {
+  for (const i = 0; i < numberArray.length; i++) {
+    if (numberArray[i] <= 1 && numberArray >= 400) return 0;
+  }
+  return 1;
+}
+function isCorrect(pobi, crong) {
+  return checkNumberInRange([...pobi, ...crong]);
 }
