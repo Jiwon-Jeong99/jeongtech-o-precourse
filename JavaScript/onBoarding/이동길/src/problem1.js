@@ -1,12 +1,14 @@
 function problem1(pobi, crong) {
-  pobi.map(([left, right]) => {
-    const leftMax = Math.max(getAddedNumber(left), getMultipliedNumber(left));
-    const rightMax = Math.max(
-      getAddedNumber(right),
-      getMultipliedNumber(right)
-    );
-  });
-  var answer = getResult(leftMax, rightMax);
+  const pobiMaxArray = pobi.map((number) =>
+    Math.max(getAddedNumber(number), getMultipliedNumber(number))
+  );
+  const pobiMax = Math.max(...pobiMaxArray);
+
+  const crongMaxArray = crong.map((number) =>
+    Math.max(getAddedNumber(number), getMultipliedNumber(number))
+  );
+  const crongMax = Math.max(...crongMaxArray);
+  var answer = getResult(pobiMax, crongMax);
   return answer;
 }
 
