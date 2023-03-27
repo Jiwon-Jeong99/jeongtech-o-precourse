@@ -57,10 +57,17 @@ function checkContinuous(person) {
   if (right - left != 1) return ERROR;
   return OK;
 }
+
+function checkLength(pages) {
+  if (pages.length != 2) return ERROR;
+  return OK;
+}
+
 function isCorrect(pobi, crong) {
   if (!checkNumberInRange([...pobi, ...crong])) return ERROR;
   if (!checkNumberEvenOrOdd(pobi[0], pobi[1])) return ERROR;
   if (!checkNumberEvenOrOdd(crong[0], crong[1])) return ERROR;
   if (!checkContinuous(pobi) || !checkContinuous(crong)) return ERROR;
+  if (!checkLength(pobi) || !checkLength(crong)) return ERROR;
   return OK;
 }
