@@ -2,8 +2,10 @@ const HAVE_TO_RUN = 1;
 const NOT_TO_RUN = 0;
 function problem2(cryptogram) {
   check(cryptogram);
-  while (checkDuplication(cryptogram)) {}
-  return answer;
+  while (checkDuplication(cryptogram)) {
+    cryptogram = removeDuplication(cryptogram);
+  }
+  return cryptogram;
 }
 
 module.exports = problem2;
@@ -26,4 +28,18 @@ function checkDuplication(cryptogram) {
     if (cryptogram[index] === cryptogram[index + 1]) return HAVE_TO_RUN;
   }
   return NOT_TO_RUN;
+}
+function removeDuplication(currentCryptogram) {
+  let currentChar = '';
+  const nextStageCryptogram = [];
+  [...currentCryptogram].forEach((cur) => {
+    if (currentChar != cur) {
+      currentChar = cur;
+      nextStageCryptogram.push(cur);
+    } else {
+      nextStageCryptogram.pop();
+      currentChar = nextStageCryptogram[nextStageCryptogram.length - 1];
+    }
+  });
+  return nextStageCryptogram.join('');
 }
