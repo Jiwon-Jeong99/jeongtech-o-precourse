@@ -26,8 +26,7 @@ function checkOddOrEven(leftNum, rightNum) {
   return false;
 }
 
-// 두수의 차가 영어로 뭔지 몰라 minus라고 함
-function checkMinusOne(leftNum, rightNum) {
+function checkAbsOne(leftNum, rightNum) {
   if (rightNum - leftNum === 1) {
     return true;
   }
