@@ -1,11 +1,13 @@
 function problem3(number) {
   check(number);
-  var answer;
-  return answer;
+  return getClapNumbers(1, number, 0);
 }
 
 module.exports = problem3;
-
+function getClapNumbers(cur, number, curClap) {
+  if (cur == number) return curClap + haveToClap(number);
+  return getClapNumbers(cur + 1, number, curClap + haveToClap(cur));
+}
 function haveToClap(number) {
   const strNumber = String(number);
   let clap = false;
