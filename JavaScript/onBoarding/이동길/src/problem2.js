@@ -2,9 +2,7 @@ const HAVE_TO_RUN = 1;
 const NOT_TO_RUN = 0;
 function problem2(cryptogram) {
   check(cryptogram);
-  while(checkDuplicatation(cryptogram)){
-    
-  }
+  while (checkDuplication(cryptogram)) {}
   return answer;
 }
 
@@ -23,7 +21,7 @@ function check(cryptogram) {
   checkLength(cryptogram);
   checkChar(cryptogram);
 }
-function checkDuplicatation(cryptogram) {
+function checkDuplication(cryptogram) {
   for (let index = 0; index < cryptogram.length - 1; index++) {
     if (cryptogram[index] === cryptogram[index + 1]) return HAVE_TO_RUN;
   }
