@@ -52,10 +52,15 @@ function checkNumberEvenOrOdd(left, right) {
   if (left % 2 == 0 || right % 2 == 1) return ERROR;
   return OK;
 }
-
+function checkContinuous(person) {
+  const [left, right] = person;
+  if (right - left != 1) return ERROR;
+  return OK;
+}
 function isCorrect(pobi, crong) {
   if (!checkNumberInRange([...pobi, ...crong])) return ERROR;
   if (!checkNumberEvenOrOdd(pobi[0], pobi[1])) return ERROR;
   if (!checkNumberEvenOrOdd(crong[0], crong[1])) return ERROR;
+  if (!checkContinuous(pobi) || !checkContinuous(crong)) return ERROR;
   return OK;
 }
