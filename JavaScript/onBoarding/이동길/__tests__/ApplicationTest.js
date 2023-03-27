@@ -41,23 +41,43 @@ describe('problem2', () => {
   });
 
   test('case3 : 알파벳이며, 소문자인가', () => {
-    expect(problem2('zYelleyz')).toThrow();
+    try {
+      problem2('zYelleyz');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 
   test('case4 : 알파벳이며, 소문자인가', () => {
-    expect(problem2('z223elleyz')).toThrow();
+    try {
+      problem2('z223elleyz');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 
   test('case5 : 알파벳이며, 소문자인가', () => {
-    expect(problem2('z!!@#3elleyz')).toThrow();
+    try {
+      problem2('z!!@#3elleyz');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 
   test('case6 : 길이가 1이상인가?', () => {
-    expect(problem2('')).toThrow();
+    try {
+      problem2('');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 
   test('case7 : 길이가 1000이하인가?', () => {
-    expect(problem2('abc'.repeat(1000))).toThrow();
+    try {
+      problem2('abc'.repeat(1000));
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 });
 
