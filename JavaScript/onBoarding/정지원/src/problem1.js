@@ -41,10 +41,10 @@ function checkRange(leftNum, rightNum) {
 // 모든 예외사항을 포함해 true, false 반환하는 함수
 function checkEverythingOk(pobi, crong) {
   if (!checkOddOrEven(...pobi)) return false;
-  if (!checkMinusOne(...pobi)) return false;
+  if (!checkAbsOne(...pobi)) return false;
   if (!checkRange(...pobi)) return false;
   if (!checkOddOrEven(...crong)) return false;
-  if (!checkMinusOne(...crong)) return false;
+  if (!checkAbsOne(...crong)) return false;
   if (!checkRange(...crong)) return false;
   return true;
 }
