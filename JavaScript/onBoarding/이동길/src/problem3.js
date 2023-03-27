@@ -5,10 +5,10 @@ function problem3(number) {
 
 module.exports = problem3;
 function getClapNumbers(cur, number, curClap) {
-  if (cur == number) return curClap + haveToClap(number);
-  return getClapNumbers(cur + 1, number, curClap + haveToClap(cur));
+  if (cur == number) return curClap + getCurrentNumberClap(number);
+  return getClapNumbers(cur + 1, number, curClap + getCurrentNumberClap(cur));
 }
-function haveToClap(number) {
+function getCurrentNumberClap(number) {
   const strNumber = String(number);
   let clapCount = 0;
   [...strNumber].forEach((numberChar) => {
