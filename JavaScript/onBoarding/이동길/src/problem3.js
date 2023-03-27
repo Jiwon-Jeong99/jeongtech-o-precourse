@@ -5,6 +5,16 @@ function problem3(number) {
 }
 
 module.exports = problem3;
+
+function haveToClap(number) {
+  const strNumber = String(number);
+  let clap = false;
+  ['3', '6', '9'].forEach((str) => {
+    if (strNumber.includes(str)) clap = true;
+  });
+  return clap;
+}
+
 function checkNumberAmount(number) {
   if (number < 1 || number > 1000)
     throw new Error('숫자는 1이상 1000이하여야합니다!');
