@@ -1,35 +1,16 @@
 function problem1(pobi, crong) {
-  // if (!checkEverythingOk(pobi, crong)) return -1;
-
-  // let pobiScore = [];
-  // let crongScore = [];
+  if (!checkEverythingOk(pobi, crong)) return -1;
 
   const pobiScore = pobi.map((page) => {
     pobiEachPage = makeNumEachToArray(page);
     return Math.max(Sum(pobiEachPage), Multiple(pobiEachPage));
   });
-
-  // for (const page of pobi) {
-  //   pobiEachPage = makeNumEachToArray(page);
-  //   pobiSum = Sum(pobiEachPage);
-  //   pobiMultiple = Multiple(pobiEachPage);
-  //   pobiScore.push(pobiSum);
-  //   pobiScore.push(pobiMultiple);
-  // }
   const pobiMax = Math.max(...pobiScore);
 
   const crongScore = crong.map((page) => {
     crongEachPage = makeNumEachToArray(page);
     return Math.max(Sum(crongEachPage), Multiple(crongEachPage));
   });
-
-  // for (const number of crong) {
-  //   crongEachPage = makeNumEachToArray(number);
-  //   crongSum = Sum(crongEachPage);
-  //   crongMultiple = Multiple(crongEachPage);
-  //   crongScore.push(crongSum);
-  //   crongScore.push(crongMultiple);
-  // }
   const crongMax = Math.max(...crongScore);
 
   if (pobiMax > crongMax) return 1;
@@ -54,24 +35,19 @@ function checkMinusOne(leftNum, rightNum) {
 }
 
 function checkRange(leftNum, rightNum) {
-  if ((1 <= leftNum, rightNum <= 400)) {
-    return true;
-  }
+  if ((1 <= leftNum, rightNum <= 400)) return true;
   return false;
 }
 
 // 모든 예외사항을 포함해 true, false 반환하는 함수
 function checkEverythingOk(pobi, crong) {
-  // const concatArray = [pobi, crong];
-  // concatArray.forEach((object) => {
-  //   if (
-  //     checkOddOrEven(object[0], object[1]) &&
-  //     checkMinusOne(object[0], object[1]) &&
-  //     checkRange(object[0], object[1])
-  //   )
-  //     return true;
-  //   return false;
-  // });
+  if (!checkOddOrEven(...pobi)) return false;
+  if (!checkMinusOne(...pobi)) return false;
+  if (!checkRange(...pobi)) return false;
+  if (!checkOddOrEven(...crong)) return false;
+  if (!checkMinusOne(...crong)) return false;
+  if (!checkRange(...crong)) return false;
+  return true;
 }
 
 // 로직 함수
