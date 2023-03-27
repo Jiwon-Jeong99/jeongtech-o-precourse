@@ -1,6 +1,7 @@
 function problem3(number) {
-  var answer;
-  return answer;
+  for(let i=1; i<number+1; i++){
+    
+  }
 }
 
 module.exports = problem3;
