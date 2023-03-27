@@ -88,6 +88,34 @@ describe('problem3', () => {
   test('case2', () => {
     expect(problem3(33)).toEqual(14);
   });
+  test('case3 : 1000이하의 수인가?', () => {
+    try {
+      problem3(1001);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case3 : 1이상의 수인가?', () => {
+    try {
+      problem3(0);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case4 : 1이상의 수인가?', () => {
+    try {
+      problem3(-1000);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case5 : 수인가?', () => {
+    try {
+      problem3('테스트');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem4', () => {
