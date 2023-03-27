@@ -43,7 +43,7 @@ function getResult(leftNumber, rightNumber) {
 
 function checkNumberInRange(numberArray) {
   for (let i = 0; i < numberArray.length; i++) {
-    if (numberArray[i] <= 1 && numberArray >= 400) return ERROR;
+    if (numberArray[i] <= 1 || numberArray[i] >= 400) return ERROR;
   }
   return OK;
 }
