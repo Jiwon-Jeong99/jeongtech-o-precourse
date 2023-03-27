@@ -32,7 +32,7 @@ function getSliceNumberArray(number) {
 
 function getMultipliedNumber(number) {
   const numberArray = getSliceNumberArray(number);
-  return numberArray.reduce((sum, num) => sum * num);
+  return numberArray.reduce((sum, num) => sum * num, 1);
 }
 
 function getResult(leftNumber, rightNumber) {
