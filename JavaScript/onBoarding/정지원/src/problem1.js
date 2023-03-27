@@ -1,27 +1,35 @@
 function problem1(pobi, crong) {
-  if (!checkEverythingOk(pobi, crong)) return -1;
+  // if (!checkEverythingOk(pobi, crong)) return -1;
 
-  let pobiScore = [];
-  let crongScore = [];
+  // let pobiScore = [];
+  // let crongScore = [];
 
-  for (const page of pobi) {
+  const pobiScore = pobi.map((page) => {
     pobiEachPage = makeNumEachToArray(page);
-    // console.log(pobiEachPage);
-    pobiSum = Sum(pobiEachPage);
-    pobiMultiple = Multiple(pobiEachPage);
-    pobiScore.push(pobiSum);
-    pobiScore.push(pobiMultiple);
-  }
+    return Math.max(Sum(pobiEachPage), Multiple(pobiEachPage));
+  });
+
+  // for (const page of pobi) {
+  //   pobiEachPage = makeNumEachToArray(page);
+  //   pobiSum = Sum(pobiEachPage);
+  //   pobiMultiple = Multiple(pobiEachPage);
+  //   pobiScore.push(pobiSum);
+  //   pobiScore.push(pobiMultiple);
+  // }
   const pobiMax = Math.max(...pobiScore);
 
-  for (const number of crong) {
-    crongEachPage = makeNumEachToArray(number);
-    // console.log(pobiEachPage);
-    crongSum = Sum(crongEachPage);
-    crongMultiple = Multiple(crongEachPage);
-    crongScore.push(crongSum);
-    crongScore.push(crongMultiple);
-  }
+  const crongScore = crong.map((page) => {
+    crongEachPage = makeNumEachToArray(page);
+    return Math.max(Sum(crongEachPage), Multiple(crongEachPage));
+  });
+
+  // for (const number of crong) {
+  //   crongEachPage = makeNumEachToArray(number);
+  //   crongSum = Sum(crongEachPage);
+  //   crongMultiple = Multiple(crongEachPage);
+  //   crongScore.push(crongSum);
+  //   crongScore.push(crongMultiple);
+  // }
   const crongMax = Math.max(...crongScore);
 
   if (pobiMax > crongMax) return 1;
