@@ -10,11 +10,12 @@ function getClapNumbers(cur, number, curClap) {
 }
 function haveToClap(number) {
   const strNumber = String(number);
-  let clap = false;
-  ['3', '6', '9'].forEach((str) => {
-    if (strNumber.includes(str)) clap = true;
+  let clapCount = 0;
+  [...strNumber].forEach((numberChar) => {
+    if (numberChar === '3' || numberChar === '6' || numberChar === '9')
+      clapCount += 1;
   });
-  return clap;
+  return clapCount;
 }
 
 function checkNumberAmount(number) {
