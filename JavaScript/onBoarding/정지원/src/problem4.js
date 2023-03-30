@@ -14,8 +14,18 @@ const reverseAscii = (inputArray) => {
   return reverseArr;
 };
 
+// 아스키코드 -> 문자 변환
+const changeAsciiToChar = (inputArray) => {
+  const stringAscii = String.fromCharCode(...inputArray);
+  return stringAscii;
+};
+
 function problem4(word) {
   const wordArray = [...word];
+  const asciiArr = changeCharToAscii(wordArray);
+  const reverseAsciiArray = reverseAscii(asciiArr);
+  const finalString = changeAsciiToChar(reverseAsciiArray);
+  return finalString;
 }
 
 module.exports = problem4;
