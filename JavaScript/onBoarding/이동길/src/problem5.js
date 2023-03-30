@@ -19,5 +19,8 @@ function moneyCheck(money) {
   if (money <= 0 && money > 1000000) {
     throw new Error('돈은 1원 이상 100만원 이하여야합니다!');
   }
+  if (!String(money).match(/^-{0,1}\d+$/)) {
+    throw new Error('돈은 자연수여야 합니다!');
+  }
 }
 module.exports = problem5;
