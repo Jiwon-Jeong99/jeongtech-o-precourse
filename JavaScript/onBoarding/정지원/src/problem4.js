@@ -5,12 +5,17 @@ const changeCharToAscii = (inputArray) => {
 };
 
 // 청개구리로 아스키코드 변환
-// 아스키코드 -> 문자 변환
+const reverseAscii = (inputArray) => {
+  const reverseArr = inputArray.map((ascii) => {
+    if (ascii < 64 || 90 < ascii < 97 || ascii > 122) ascii;
+    if (65 <= ascii <= 90) 155 - ascii;
+    if (97 <= ascii <= 122) 219 - ascii;
+  });
+  return reverseArr;
+};
 
 function problem4(word) {
   const wordArray = [...word];
-  var answer;
-  return answer;
 }
 
 module.exports = problem4;
