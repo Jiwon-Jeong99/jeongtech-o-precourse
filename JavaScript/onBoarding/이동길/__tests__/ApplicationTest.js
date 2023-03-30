@@ -146,6 +146,13 @@ describe('problem5', () => {
   test('case2', () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
   });
+  test('case3 : 돈이 0 인경우', () => {
+    try {
+      problem5(0);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem6', () => {
