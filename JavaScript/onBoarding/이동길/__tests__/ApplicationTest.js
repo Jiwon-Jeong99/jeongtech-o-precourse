@@ -122,6 +122,20 @@ describe('problem4', () => {
   test('case1', () => {
     expect(problem4('I love you')).toEqual('R olev blf');
   });
+  test('case2 : 빈 문자열인 경우', () => {
+    try {
+      problem4('');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case3 : 1000 이상의 문자열인 경우', () => {
+    try {
+      problem4('a'.repeat(1000));
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem5', () => {
