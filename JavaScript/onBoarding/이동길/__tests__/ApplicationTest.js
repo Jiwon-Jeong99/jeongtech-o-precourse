@@ -153,6 +153,13 @@ describe('problem5', () => {
       expect(err).toBeInstanceOf(Error);
     }
   });
+  test('case4 : 돈이 소수 인경우', () => {
+    try {
+      problem5(5000.125);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem6', () => {
