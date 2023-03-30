@@ -1,4 +1,5 @@
 function problem4(word) {
+  checkLength(word);
   return getReversedString(word);
 }
 
@@ -14,5 +15,10 @@ function getReversedChar(char) {
 function getReversedString(str) {
   const stringArr = str.split('');
   return stringArr.map((char) => getReversedChar(char)).join('');
+}
+
+function checkLength(str) {
+  if (str.length < 1 && str.length > 1000)
+    throw new Error('문자열 길이는 1이상 1000이하여야 합니다.');
 }
 module.exports = problem4;
