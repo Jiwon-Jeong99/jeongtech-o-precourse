@@ -7,7 +7,10 @@ module.exports = problem6;
 function getEmailByDuplicatedNickName(forms) {
   const nickNames = forms.map((data) => data[1]);
   const compareStringList = getCheckedStringList(nickNames);
-  const compareStringListObject = getCompareStringListObject(compareStringList);
+  const compareStringListObject = getCompareStringListObject(
+    compareStringList,
+    forms
+  );
   const duplicateEmail = new Set();
 
   Object.values(compareStringListObject).forEach(({ count, emailList }) => {
@@ -31,7 +34,7 @@ function getCheckedStringList(nickNames) {
   return stringList;
 }
 
-function getCompareStringListObject(compareStringList) {
+function getCompareStringListObject(compareStringList, forms) {
   const compareStringListObject = {};
 
   compareStringList.forEach(
