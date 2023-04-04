@@ -1,4 +1,5 @@
 function problem6(forms) {
+  check(forms);
   return getEmailByDuplicatedNickName(forms);
 }
 
@@ -51,4 +52,29 @@ function getCompareStringListObject(compareStringList, forms) {
     });
   });
   return compareStringListObject;
+}
+function check(forms) {
+  checkEmail(forms);
+  checkFormsLength(forms);
+  checkNickName(forms);
+}
+function checkFormsLength(forms) {
+  if (forms.length < 1 || forms.length > 10000) {
+    throw new Error('크루의 수가 잘못되었습니다!');
+  }
+}
+function checkEmail(forms) {
+  let regex = new RegExp('[a-z0-9]+@email.com');
+  forms.forEach(([email]) => {
+    if (!regex.test(email)) throw new Error('이메일 형식이 아닙니다!');
+  });
+  regex.test();
+}
+function checkNickName(forms) {
+  forms.forEach(([_, nickName]) => {
+    const regex = /^[가-힣]+$/;
+    if (nickName.length >= 20 || nickName.length < 1)
+      throw new Error('닉네임은 1자 이상 20자 미만이어야합니다.');
+    if (!regex.test(nickName)) throw new Error('닉네임은 한글이어야 합니다!');
+  });
 }
