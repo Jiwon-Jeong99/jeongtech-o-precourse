@@ -174,6 +174,36 @@ describe('problem6', () => {
       ])
     ).toEqual(['jason@email.com', 'jm@email.com', 'mj@email.com']);
   });
+  test('case2 : 크루인원수 오류', () => {
+    try {
+      problem6([]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case3 : 이메일 형식이 아닌 경우', () => {
+    try {
+      problem6([['dl@e.com', '하이루']]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case4 :닉네임이 한글이 아닌경우', () => {
+    try {
+      problem6([['dl@email.com', 'ddd']]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case5 :닉네임이 20자 이상인경우', () => {
+    try {
+      problem6([
+        ['dl@email.com', '테스트테스트테스트테스트테스트테스트테스트'],
+      ]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem7', () => {
