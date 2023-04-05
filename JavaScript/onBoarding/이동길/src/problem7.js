@@ -1,8 +1,12 @@
 function problem7(user, friends, visitors) {
-  var answer;
+  const answer = [];
   const friendsListObject = getFriendsListObject(friends);
   const youMayKnow = getYouMayKnowPeople(user, friendsListObject);
   const scoreObject = getFriendsScoreObject(youMayKnow, visitors);
+  scoreObject.forEach(([person, _]) => {
+    answer.push(person);
+  });
+  console.log(answer);
   return answer;
 }
 
@@ -46,7 +50,12 @@ function getFriendsScoreObject(youMayKnow, visitors) {
     }
     scoreObject[person] += 1;
   });
-  return scoreObject;
+  return getSortedArray(scoreObject);
 }
 
+function getSortedArray(scoreObject) {
+  return Object.entries(scoreObject)
+    .sort((a, b) => b[1] - a[1])
+    .sort((a, b) => b[0] - a[0]);
+}
 module.exports = problem7;
