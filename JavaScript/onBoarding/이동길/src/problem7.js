@@ -1,6 +1,8 @@
 function problem7(user, friends, visitors) {
   var answer;
   const friendsListObject = getFriendsListObject(friends);
+  const youMayKnow = getYouMayKnowPeople(user, friendsListObject);
+  console.log(youMayKnow);
   return answer;
 }
 
@@ -20,6 +22,16 @@ function getFriendsListObject(friends) {
   });
 
   return friendsListObject;
+}
+
+function getYouMayKnowPeople(user, friendsListObject) {
+  const youMayKnow = new Set();
+  [...friendsListObject[user]].map((friend) => {
+    friendsListObject[friend].forEach((person) => {
+      if (person != user) youMayKnow.add(person);
+    });
+  });
+  return [...youMayKnow];
 }
 
 module.exports = problem7;
