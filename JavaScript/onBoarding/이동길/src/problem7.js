@@ -2,7 +2,7 @@ function problem7(user, friends, visitors) {
   var answer;
   const friendsListObject = getFriendsListObject(friends);
   const youMayKnow = getYouMayKnowPeople(user, friendsListObject);
-  console.log(youMayKnow);
+  const scoreObject = getFriendsScoreObject(youMayKnow, visitors);
   return answer;
 }
 
@@ -32,6 +32,21 @@ function getYouMayKnowPeople(user, friendsListObject) {
     });
   });
   return [...youMayKnow];
+}
+
+function getFriendsScoreObject(youMayKnow, visitors) {
+  const scoreObject = {};
+  youMayKnow.forEach((person) => {
+    scoreObject[person] = 10;
+  });
+
+  visitors.forEach((person) => {
+    if (scoreObject[person] === undefined) {
+      scoreObject[person] = 0;
+    }
+    scoreObject[person] += 1;
+  });
+  return scoreObject;
 }
 
 module.exports = problem7;
