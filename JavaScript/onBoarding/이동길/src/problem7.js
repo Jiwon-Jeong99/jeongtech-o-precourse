@@ -3,10 +3,12 @@ function problem7(user, friends, visitors) {
   const friendsListObject = getFriendsListObject(friends);
   const youMayKnow = getYouMayKnowPeople(user, friendsListObject);
   const scoreObject = getFriendsScoreObject(youMayKnow, visitors);
-  scoreObject.forEach(([person, _]) => {
-    answer.push(person);
-  });
-  console.log(answer);
+
+  deleteAlreadyFriend(scoreObject, friendsListObject, user).forEach(
+    ([person, _]) => {
+      if (answer.length < 5) answer.push(person);
+    }
+  );
   return answer;
 }
 
@@ -50,12 +52,19 @@ function getFriendsScoreObject(youMayKnow, visitors) {
     }
     scoreObject[person] += 1;
   });
-  return getSortedArray(scoreObject);
+  return scoreObject;
 }
 
 function getSortedArray(scoreObject) {
   return Object.entries(scoreObject)
     .sort((a, b) => b[1] - a[1])
     .sort((a, b) => b[0] - a[0]);
+}
+
+function deleteAlreadyFriend(scoreObject, friendsListObject, user) {
+  friendsListObject[user].forEach((friend) => {
+    if (scoreObject[friend]) delete scoreObject[friend];
+  });
+  return getSortedArray(scoreObject);
 }
 module.exports = problem7;
