@@ -122,6 +122,20 @@ describe('problem4', () => {
   test('case1', () => {
     expect(problem4('I love you')).toEqual('R olev blf');
   });
+  test('case2 : 빈 문자열인 경우', () => {
+    try {
+      problem4('');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case3 : 1000 이상의 문자열인 경우', () => {
+    try {
+      problem4('a'.repeat(1000));
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
 });
 
 describe('problem5', () => {
@@ -131,6 +145,20 @@ describe('problem5', () => {
 
   test('case2', () => {
     expect(problem5(15000)).toEqual([0, 1, 1, 0, 0, 0, 0, 0, 0]);
+  });
+  test('case3 : 돈이 0 인경우', () => {
+    try {
+      problem5(0);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case4 : 돈이 소수 인경우', () => {
+    try {
+      problem5(5000.125);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 });
 
@@ -145,6 +173,36 @@ describe('problem6', () => {
         ['nowm@email.com', '이제엠'],
       ])
     ).toEqual(['jason@email.com', 'jm@email.com', 'mj@email.com']);
+  });
+  test('case2 : 크루인원수 오류', () => {
+    try {
+      problem6([]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case3 : 이메일 형식이 아닌 경우', () => {
+    try {
+      problem6([['dl@e.com', '하이루']]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case4 :닉네임이 한글이 아닌경우', () => {
+    try {
+      problem6([['dl@email.com', 'ddd']]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
+  });
+  test('case5 :닉네임이 20자 이상인경우', () => {
+    try {
+      problem6([
+        ['dl@email.com', '테스트테스트테스트테스트테스트테스트테스트'],
+      ]);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+    }
   });
 });
 
