@@ -1,4 +1,5 @@
 const MissionUtils = require("@woowacourse/mission-utils");
+const Model = require("./Model");
 
 class App {
   constructor() {
