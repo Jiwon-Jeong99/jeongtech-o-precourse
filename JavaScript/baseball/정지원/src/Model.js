@@ -5,15 +5,24 @@ class Model {
   }
 
   getStrike() {
-    let count = 0;
+    let strikeCount = 0;
     for (let i = 0; i < 3; i++) {
-      if (this.inputArr[i] === this.randomArr[i]) count += 1;
-      return count;
+      if (this.inputArr[i] === this.randomArr[i]) strikeCount += 1;
+      return strikeCount;
     }
   }
 
-
-
+  getBall() {
+    let ballCount = 0;
+    for (let i = 0; i < 3; i++) {
+      if (
+        this.inputArr.includes(this.randomArr[i]) &&
+        this.inputArr[i] !== this.randomArr[i]
+      )
+        ballCount += 1;
+      return ballCount;
+    }
+  }
 }
 
 module.exports = Model;
