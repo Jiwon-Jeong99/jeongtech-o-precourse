@@ -1,5 +1,10 @@
 const MissionUtils = require("@woowacourse/mission-utils");
+
 class App {
+  constructor() {
+    this.inputNum = inputNum;
+  }
+
   showGameStart() {
     MissionUtils.Console.print("숫자 야구 게임을 시작합니다.");
   }
@@ -12,8 +17,15 @@ class App {
     }
   }
 
+  inputNum() {
+    MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
+
+    })
+  }
+
   play() {
     this.showGameStart();
+    this.selectRandomNum();
   }
 }
 
