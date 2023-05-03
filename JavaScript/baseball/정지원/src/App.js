@@ -24,7 +24,8 @@ class App {
     this.randomNumArr = randomArr;
   }
 
-  inputNum() { //promise 반환
+  inputNum() {
+    //promise 반환
     return new Promise((resolve) => {
       MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
         let nums = [];
@@ -47,6 +48,7 @@ class App {
       MissionUtils.Console.print(
         "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
       );
+      this.showSelect();
     } else if (strikeNum > 0 && ballNum > 0) {
       MissionUtils.Console.print(`${ballNum}볼 ${strikeNum}스트라이크`);
     } else if (strikeNum > 0 && ballNum === 0) {
@@ -58,11 +60,35 @@ class App {
     }
   }
 
-  async play() {
-    this.showGameStart();
+  showSelect() {
+    return new Promise((resolve) => {
+      MissionUtils.Console.readLine(
+        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n",
+        (input) => {
+          if (input === 1) {
+            this.main();
+          } else if (input === 2) {
+            MissionUtils.Console.close();
+          } else {
+            throw new Error("잘못된 값을 입력하셨습니다.");
+          }
+          resolve(); //프로미스 완료
+        }
+      );
+    });
+  }
+
+  async main() {
     this.selectRandomNum();
-    await this.inputNum();
-    this.showResult();
+    while (true) {
+      await this.inputNum();
+      await this.showResult();
+    }
+  }
+
+  play() {
+    this.showGameStart();
+    this.main();
   }
 }
 
