@@ -23,6 +23,24 @@ class Model {
       return ballCount;
     }
   }
+
+  findElement(element) {
+    if (
+      element === this.randomArr[0] ||
+      element === this.randomArr[1] ||
+      element === this.randomArr[2]
+    ) {
+      return true;
+    }
+  }
+
+  getNothing() {
+    if (this.inputArr.some(findElement)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
 
 module.exports = Model;
