@@ -24,40 +24,45 @@ class App {
     this.randomNumArr = randomArr;
   }
 
-  inputNum() {
-    let nums = [];
-    MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
-      do {
-        nums.push(input % 10);
-        input = Math.floor(input / 10);
-      } while (input > 0);
-      return nums;
+  inputNum() { //promise 반환
+    return new Promise((resolve) => {
+      MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
+        let nums = [];
+        do {
+          nums.push(input % 10);
+          input = Math.floor(input / 10);
+        } while (input > 0);
+        this.inputNumArr = nums;
+        resolve(); //프로미스 완료
+      });
     });
-    this.inputNumArr = nums;
   }
 
   showResult() {
     const model = new Model(this.inputNumArr, this.randomNumArr);
     const strikeNum = model.getStrike();
     const ballNum = model.getBall();
-    const nothing = model.getNothing();
+    // const nothing = model.getNothing();
     if (strikeNum === 3) {
-      return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+      MissionUtils.Console.print(
+        "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+      );
     } else if (strikeNum > 0 && ballNum > 0) {
-      return `${ballNum}볼 ${strikeNum}스트라이크`;
+      MissionUtils.Console.print(`${ballNum}볼 ${strikeNum}스트라이크`);
     } else if (strikeNum > 0 && ballNum === 0) {
-      return `${strikeNum}스트라이크`;
+      MissionUtils.Console.print(`${strikeNum}스트라이크`);
     } else if (strikeNum === 0 && ballNum > 0) {
-      return `${ballNum}볼`;
+      MissionUtils.Console.print(`${ballNum}볼`);
     } else {
-      return "낫싱";
+      MissionUtils.Console.print("낫싱");
     }
   }
 
-  play() {
+  async play() {
     this.showGameStart();
     this.selectRandomNum();
-    this.inputNum();
+    await this.inputNum();
+    this.showResult();
   }
 }
 
