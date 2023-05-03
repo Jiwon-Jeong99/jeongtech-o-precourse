@@ -2,8 +2,8 @@ const MissionUtils = require("@woowacourse/mission-utils");
 
 class App {
   constructor() {
-    this.inputNumArr = inputNumArr;
-    this.randomNumArr = radomNumArr;
+    this.inputNumArr;
+    this.randomNumArr; 
   }
 
   showGameStart() {
@@ -11,11 +11,11 @@ class App {
   }
 
   selectRandomNum() {
-    randomArr = [];
+    const randomArr = [];
     for (let i = 0; i < 3; i++) {
       const randomNum = MissionUtils.Random.pickNumberInRange(1, 9);
       if (!randomArr.includes(randomNum)) {
-        randomNumArr.push(randomNum);
+        randomArr.push(randomNum);
       } else {
         i--;
       }
@@ -24,8 +24,8 @@ class App {
   }
 
   inputNum() {
+    let nums = [];
     MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
-      let nums = [];
       do {
         nums.push(input % 10);
         input = Math.floor(input / 10);
@@ -41,5 +41,8 @@ class App {
     this.inputNum();
   }
 }
+
+const startGame = new App();
+startGame.play();
 
 module.exports = App;
