@@ -11,12 +11,16 @@ class App {
   }
 
   selectRandomNum() {
-    randomNumArr = [];
-    for (i = 0; i < 3; i++) {
+    randomArr = [];
+    for (let i = 0; i < 3; i++) {
       const randomNum = MissionUtils.Random.pickNumberInRange(1, 9);
-      randomNumArr.push(randomNum);
+      if (!randomArr.includes(randomNum)) {
+        randomNumArr.push(randomNum);
+      } else {
+        i--;
+      }
     }
-    this.randomNumArr = randomNumArr;
+    this.randomNumArr = randomArr;
   }
 
   inputNum() {
