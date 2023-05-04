@@ -43,12 +43,10 @@ class App {
     const model = new Model(this.inputNumArr, this.randomNumArr);
     const strikeNum = model.getStrike();
     const ballNum = model.getBall();
-    // const nothing = model.getNothing();
     if (strikeNum === 3) {
       MissionUtils.Console.print(
         "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료"
       );
-      this.showSelect();
     } else if (strikeNum > 0 && ballNum > 0) {
       MissionUtils.Console.print(`${ballNum}볼 ${strikeNum}스트라이크`);
     } else if (strikeNum > 0 && ballNum === 0) {
@@ -60,13 +58,26 @@ class App {
     }
   }
 
-  showSelect() {
+  async makeGame() {
+    while (this.inputNumArr !== this.randomNumArr) {
+      await this.inputNum();
+      this.showResult();
+    }
+    await this.showSelect();
+  }
+
+  async showSelect() {
     return new Promise((resolve) => {
       MissionUtils.Console.readLine(
         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n",
         (input) => {
           if (input === 1) {
-            this.main();
+            this.selectRandomNum();
+            resolve();
+            while (this.inputNumArr !== this.randomNumArr) {
+              this.makeGame();
+            }
+            this.showSelect();
           } else if (input === 2) {
             MissionUtils.Console.close();
           } else {
@@ -78,17 +89,12 @@ class App {
     });
   }
 
-  async main() {
+  async play() {
+    this.showGameStart();
     this.selectRandomNum();
     while (true) {
-      await this.inputNum();
-      await this.showResult();
+      this.makeGame();
     }
-  }
-
-  play() {
-    this.showGameStart();
-    this.main();
   }
 }
 
